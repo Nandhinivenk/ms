@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-community-dialects</artifactId>
-			<version>6.6.5.Final</version>
+			<version>6.4.4.Final</version>
 		</dependency>
 
 		<dependency>
@@ -108,6 +108,16 @@
 			<groupId>org.glassfish.expressly</groupId>
 			<artifactId>expressly</artifactId>
 			<version>5.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 
