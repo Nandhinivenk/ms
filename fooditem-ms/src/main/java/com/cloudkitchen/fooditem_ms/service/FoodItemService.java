@@ -1,8 +1,8 @@
 package com.cloudkitchen.fooditem_ms.service;
 
+import com.cloudkitchen.fooditem_ms.dto.FoodIngredientMappingDTO;
+import com.cloudkitchen.fooditem_ms.external.FoodIngredientMappingClient;
 import com.cloudkitchen.fooditem_ms.model.FoodItem;
-import com.cloudkitchen.fooditem_ms.model.FoodIngredientMapping;
-import com.cloudkitchen.fooditem_ms.repository.FoodIngredientMappingRepository;
 import com.cloudkitchen.fooditem_ms.repository.FoodItemRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,11 @@ import java.util.List;
 public class FoodItemService {
 
     private final FoodItemRepository foodItemRepository;
-    private final FoodIngredientMappingRepository ingredientMappingRepository;
+    private final FoodIngredientMappingClient mappingClient;
 
-    public FoodItemService(FoodItemRepository foodItemRepository, FoodIngredientMappingRepository ingredientMappingRepository) {
+    public FoodItemService(FoodItemRepository foodItemRepository, FoodIngredientMappingClient mappingClient) {
         this.foodItemRepository = foodItemRepository;
-        this.ingredientMappingRepository = ingredientMappingRepository;
+        this.mappingClient = mappingClient;
     }
 
     public FoodItem addFoodItem(FoodItem foodItem) {
@@ -47,7 +47,7 @@ public class FoodItemService {
         foodItemRepository.deleteById(id);
     }
 
-    public List<FoodIngredientMapping> getIngredientsForFoodItem(Long foodId) {
-        return ingredientMappingRepository.findByFoodItemId(foodId);
+    public List<FoodIngredientMappingDTO> getIngredientsForFoodItem(Long foodId) {
+        return mappingClient.getMappingsByFoodItemId(foodId);
     }
 }

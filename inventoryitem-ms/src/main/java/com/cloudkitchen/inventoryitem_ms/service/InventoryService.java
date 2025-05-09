@@ -1,9 +1,11 @@
 package com.cloudkitchen.inventoryitem_ms.service;
 
 import com.cloudkitchen.inventoryitem_ms.exception.InsufficientStockException;
+import com.cloudkitchen.inventoryitem_ms.external.NotificationClient;
 import com.cloudkitchen.inventoryitem_ms.model.InventoryItem;
 import com.cloudkitchen.inventoryitem_ms.repository.InventoryRepository;
 import com.cloudkitchen.inventoryitem_ms.utils.QRCodeGenerator;
+import com.cloudkitchen.inventoryitem_ms.external.NotificationClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,11 +14,11 @@ import java.util.List;
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
-    private final NotificationService notificationService;
+    private final NotificationClient notificationClient;
 
-    public InventoryService(InventoryRepository inventoryRepository, NotificationService notificationService) {
+    public InventoryService(InventoryRepository inventoryRepository, NotificationClient notificationClient) {
         this.inventoryRepository = inventoryRepository;
-        this.notificationService = notificationService;
+        this.notificationClient = notificationClient;
     }
 
     public InventoryItem addInventoryItem(InventoryItem item) {
@@ -76,7 +78,7 @@ public class InventoryService {
         if (updated.getQuantity() < updated.getLowStockThreshold()) {
             String msg = "Low stock alert for item: " + updated.getName() +
                     " (" + updated.getQuantity() + " " + updated.getUnit() + ")";
-            notificationService.addLowStockAlert(msg);
+            notificationClient.sendLowStockNotification(msg);
         }
     }
 }

@@ -36,4 +36,10 @@ public class InventoryController {
     public ResponseEntity<InventoryItem> updateInventory(@PathVariable Long id, @RequestBody InventoryItem item) {
         return ResponseEntity.ok(inventoryService.updateInventory(id, item));
     }
+
+    @PostMapping("/{id}/reduce")
+    public ResponseEntity<Void> reduceInventory(@PathVariable Long id, @RequestParam Double quantity) {
+        inventoryService.reduceInventory(id, quantity);
+        return ResponseEntity.ok().build();
+    }
 }
