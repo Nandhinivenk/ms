@@ -1,0 +1,53 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: api-gateway
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: customer-service
+          uri: lb://customer-ms
+          predicates:
+            - Path=/api/customers/**
+        - id: order-service
+          uri: lb://order-ms
+          predicates:
+            - Path=/api/orders/**
+        - id: payment-service
+          uri: lb://payment-ms
+          predicates:
+            - Path=/api/payments/**
+        - id: food-item-service
+          uri: lb://fooditem-ms
+          predicates:
+            - Path=/api/food-items/**
+        - id: inventory-service
+          uri: lb://inventoryitem-ms
+          predicates:
+            - Path=/api/inventory/**
+        - id: notification-service
+          uri: lb://notification-ms
+          predicates:
+            - Path=/api/notifications/**
+        - id: kitchen-flow-service
+          uri: lb://kitchenflow-ms
+          predicates:
+            - Path=/api/kitchen/**
+        - id: frontend
+          uri: http://localhost:3000
+          predicates:
+            - Path=/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka

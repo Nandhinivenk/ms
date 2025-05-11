@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server" />
+      </profile>
+      <profile name="Annotation profile for kitchenflow-ms" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="foodingredientmapping-ms" />
+        <module name="kitchenflow-ms" />
+        <module name="order-ms" />
+        <module name="fooditem-ms" />
+        <module name="api-gateway" />
+        <module name="customer-ms" />
+        <module name="inventoryitem-ms" />
+        <module name="delivery-ms" />
+      </profile>
+      <profile name="Annotation profile for notification-ms" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="notification-ms" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="order-ms (1)" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="customer-ms" options="-parameters" />
+      <module name="delivery-ms" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="foodingredientmapping-ms" options="-parameters" />
+      <module name="fooditem-ms" options="-parameters" />
+      <module name="inventoryitem-ms" options="-parameters" />
+      <module name="kitchenflow-ms" options="-parameters" />
+      <module name="notification-ms" options="-parameters" />
+      <module name="order-ms" options="-parameters" />
+      <module name="order-ms (1)" options="-parameters" />
+    </option>
+  </component>
+</project>

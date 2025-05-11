@@ -17,6 +17,11 @@ public class KitchenFlowController {
         this.kitchenFlowService = kitchenFlowService;
     }
 
+    @PostMapping
+    public ResponseEntity<KitchenFlow> createKitchenFlow(@RequestBody KitchenFlow request) {
+        return ResponseEntity.ok(kitchenFlowService.createWorkflow(request));
+    }
+
     @GetMapping
     public ResponseEntity<List<KitchenFlow>> getAllWorkflows() {
         return ResponseEntity.ok(kitchenFlowService.getAllWorkflows());

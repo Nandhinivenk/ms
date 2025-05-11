@@ -19,6 +19,11 @@ public class KitchenFlowService {
         return kitchenFlowRepository.findAll();
     }
 
+    public KitchenFlow createWorkflow(KitchenFlow flow) {
+        flow.setStatus("RECEIVED");
+        return kitchenFlowRepository.save(flow);
+    }
+
     public KitchenFlow updateWorkflowStatus(Long id, String newStatus) {
         KitchenFlow workflow = kitchenFlowRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Workflow not found"));

@@ -1,5 +1,6 @@
 package com.cloudkitchen.delivery_ms.service;
 
+import com.cloudkitchen.delivery_ms.dto.OrderItemDto;
 import com.cloudkitchen.delivery_ms.external.OrderServiceClient;
 import com.cloudkitchen.delivery_ms.model.DeliveryAssignment;
 import com.cloudkitchen.delivery_ms.repository.DeliveryAssignmentRepository;
@@ -20,7 +21,12 @@ public class DeliveryService {
     }
 
     public DeliveryAssignment assignDelivery(Long orderId, String deliveryPersonName) {
-        if (!orderServiceClient.checkOrderExists(orderId)) {
+        try {
+            OrderItemDto order = orderServiceClient.getOrderById(orderId);
+            if (order == null) {
+                throw new IllegalArgumentException("Order with ID " + orderId + " does not exist.");
+            }
+        } catch (Exception e) {
             throw new IllegalArgumentException("Order with ID " + orderId + " does not exist.");
         }
 
