@@ -14,14 +14,18 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
+        - id: admin-service
+          uri: lb://admin-ms
+          predicates:
+            - Path=/admin/**,/dashboard/**
         - id: customer-service
           uri: lb://customer-ms
           predicates:
-            - Path=/api/customers/**,/auth,/customer
+            - Path=/api/customers/**,/auth/**,/customer/**
         - id: order-service
           uri: lb://order-ms
           predicates:
-            - Path=/api/orders/**
+            - Path=/orders/**
         - id: food-item-service
           uri: lb://fooditem-ms
           predicates:

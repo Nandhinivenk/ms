@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 // FoodItemClient.java
-@FeignClient(name = "fooditem-ms", url = "http://localhost:8095/api/food-items")
+@FeignClient(name = "fooditem-ms")
 public interface FoodItemClient {
-    @GetMapping
+    @GetMapping("/api/food-items")
     List<FoodItemDTO> getAllFoodItems();
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/food-items/{id}")
     FoodItemDTO getFoodItemById(@PathVariable("id") Long id);
 }

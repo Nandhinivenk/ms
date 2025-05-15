@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "order-ms", url = "http://localhost:8099/orders")
+@FeignClient(name = "order-ms")
 public interface OrderClient {
-    @PostMapping
+    @PostMapping("/orders")
     OrderItemDTO placeOrder(@RequestBody OrderItemDTO orderItem);
 
-    @GetMapping("/customer/{customerId}")
+    @GetMapping("/orders/customer/{customerId}")
     List<OrderItemDTO> getOrdersByCustomer(@PathVariable("customerId") Long customerId);
 }
