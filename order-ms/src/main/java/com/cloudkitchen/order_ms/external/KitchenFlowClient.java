@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "kitchenflow-ms") // match with service name in Eureka
+@FeignClient(name = "kitchenflow-ms", url = "http://localhost:8097/kitchen") // match with service name in Eureka
 public interface KitchenFlowClient {
-    @PostMapping("/kitchen")
+    @PostMapping
     void createKitchenFlow(@RequestBody KitchenFlowRequest request);
 }

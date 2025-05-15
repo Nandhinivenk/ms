@@ -1,5 +1,6 @@
 package com.kitchenflow.kitchenflow_ms.service;
 
+import com.kitchenflow.kitchenflow_ms.exception.ResourceNotFoundException;
 import com.kitchenflow.kitchenflow_ms.model.KitchenFlow;
 import com.kitchenflow.kitchenflow_ms.repository.KitchenFlowRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class KitchenFlowService {
     public KitchenFlow createWorkflow(KitchenFlow flow) {
         flow.setStatus("RECEIVED");
         return kitchenFlowRepository.save(flow);
+    }
+
+    public KitchenFlow getByOrderId(Long orderId) {
+        return kitchenFlowRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("No flow for order " + orderId));
     }
 
     public KitchenFlow updateWorkflowStatus(Long id, String newStatus) {

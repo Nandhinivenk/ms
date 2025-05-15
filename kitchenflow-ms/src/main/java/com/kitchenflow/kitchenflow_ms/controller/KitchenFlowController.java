@@ -31,4 +31,12 @@ public class KitchenFlowController {
     public ResponseEntity<KitchenFlow> updateWorkflowStatus(@PathVariable Long id, @RequestParam String status) {
         return ResponseEntity.ok(kitchenFlowService.updateWorkflowStatus(id, status));
     }
+
+    // in KitchenFlowController
+    @GetMapping("/order/{orderId}")
+    public ResponseEntity<KitchenFlow> getByOrderId(@PathVariable Long orderId) {
+        KitchenFlow flow = kitchenFlowService.getByOrderId(orderId);
+        return ResponseEntity.ok(flow);
+    }
+
 }

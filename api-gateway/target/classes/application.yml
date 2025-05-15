@@ -17,15 +17,11 @@ spring:
         - id: customer-service
           uri: lb://customer-ms
           predicates:
-            - Path=/api/customers/**
+            - Path=/api/customers/**,/auth,/customer
         - id: order-service
           uri: lb://order-ms
           predicates:
             - Path=/api/orders/**
-        - id: payment-service
-          uri: lb://payment-ms
-          predicates:
-            - Path=/api/payments/**
         - id: food-item-service
           uri: lb://fooditem-ms
           predicates:
@@ -33,7 +29,7 @@ spring:
         - id: inventory-service
           uri: lb://inventoryitem-ms
           predicates:
-            - Path=/api/inventory/**
+            - Path=/inventory/**
         - id: notification-service
           uri: lb://notification-ms
           predicates:
@@ -41,7 +37,15 @@ spring:
         - id: kitchen-flow-service
           uri: lb://kitchenflow-ms
           predicates:
-            - Path=/api/kitchen/**
+            - Path=/kitchen/**
+        - id: delivery-service
+          uri: lb://delivery-ms
+          predicates:
+            - Path=/delivery/**
+        - id: food-ingredient-mapping-service
+          uri: lb://foodingredientmapping-ms
+          predicates:
+            - Path=/api/food-ingredients/**
         - id: frontend
           uri: http://localhost:3000
           predicates:

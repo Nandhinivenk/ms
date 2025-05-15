@@ -9,7 +9,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-server" />
       </profile>
-      <profile name="Annotation profile for kitchenflow-ms" enabled="true">
+      <profile name="Annotation profile for notification-ms" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="notification-ms" />
+      </profile>
+      <profile name="Annotation profile for customer-ms" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -25,15 +34,6 @@
         <module name="customer-ms" />
         <module name="inventoryitem-ms" />
         <module name="delivery-ms" />
-      </profile>
-      <profile name="Annotation profile for notification-ms" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
-        </processorPath>
-        <module name="notification-ms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
